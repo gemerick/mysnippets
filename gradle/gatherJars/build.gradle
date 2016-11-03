@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.mockito', name: 'mockito-core', version: '2.2.5'
+}
+
+task copyDependencies(type: Copy) {
+    into {'build/jars'}
+    from {configurations.compile.files}
+    include '**/*.jar'
+}
